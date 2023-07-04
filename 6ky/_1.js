@@ -14,3 +14,32 @@ titleCase('a clash of KINGS', 'a an the of') // should return: 'A Clash of Kings
 titleCase('THE WIND IN THE WILLOWS', 'The In') // should return: 'The Wind in the Willows'
 titleCase('the quick brown fox') // should return: 'The Quick Brown Fo
  */
+
+function titleCase(title = "", minorWords = "") {
+  let arrTitle = title.split(" ");
+  //let minorWords = minorWords.toLocaleLowerCase();
+
+
+  let resString = "";
+  for (let i = 0; i < arrTitle.length; i++) {
+    let tempArrWord = [];
+
+    if (i == 0) {
+      tempArrWord = arrTitle[i].split("");
+      tempArrWord[0] = tempArrWord[0].toUpperCase();
+      resString += tempArrWord.join("");
+      continue;
+    }
+    console.log(minorWords.toLocaleLowerCase().split(" "));
+    if (minorWords.toLocaleLowerCase().split(" ").includes(arrTitle[i])) {
+      resString = resString + " " + arrTitle[i];
+      console.log('')
+    } else {
+      tempArrWord = arrTitle[i].split("");
+      tempArrWord[0] = tempArrWord[0].toUpperCase();
+      resString = resString + " " + tempArrWord.join("");
+    }
+  }
+  return resString;
+}
+console.log(titleCase("миру мир", "пир тир Мир"));
